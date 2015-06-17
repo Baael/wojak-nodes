@@ -1,0 +1,203 @@
+<!-- CREDENTIALS -->
+
+<script type="text/x-red" data-template-name="ivona-credentials">
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-api_key"><i class="fa fa-user"></i> Api key</label>
+        <input type="text" id="node-config-input-api_key">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-user"></i> Password</label>
+        <input type="text" id="node-config-input-password">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('ivona-credentials',{
+        category: 'config',
+        defaults: {
+            name:     { value:"" },
+            api_key:  { value:"" },
+            password: { value:"" }
+        },
+        label: function() {
+            return this.name || "";
+        }
+    });
+</script>
+
+
+<!-- FORM -->
+
+<script type="text/javascript">
+    RED.nodes.registerType('ivona-say',{
+        category: 'notifications',
+        color:    '#f3bfce',
+        defaults: {
+            name:    { value: "" },
+            message: { value: "{{payload}}" },
+            voice:   { value: "41" },
+            exec:    { value: "" },
+            dir:     { value: "/tmp/{{voice_name}}-{{lang}}-{{slug}}.mp3" },
+            broker:  { type:"ivona-credentials", required:true }
+        },
+        inputs:  1,
+        outputs: 1,
+        icon: "say.png",
+        label: function() {
+            return this.name || "ivona";
+        },
+        oneditprepare: function() {
+            var that = this;
+            this.editor = RED.editor.createEditor({
+                id:    'node-input-message-editor',
+                mode:  'ace/mode/html',
+                value: $("#node-input-message").val()
+            });
+            RED.library.create({
+                url:    "functions", // where to get the data from
+                type:   "function",  // the type of object the library is for
+                editor: that.editor, // the field name the main text body goes to
+                fields: ['name','outputs']
+            });
+            this.editor.focus();
+
+
+        },
+        oneditsave: function() {
+            $("#node-input-message").val(this.editor.getValue())
+            delete this.editor;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ivona-say">
+    <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> Credentials</label>
+        <input type="text" id="node-input-broker">
+    </div>
+
+    <div class="form-row node-text-editor-row">
+        <label for="node-input-message-editor"><i class="fa fa-file-code-o"></i> Message</label>
+        <input id="node-input-message" type="hidden">
+        <div style="height: 150px;" class="node-text-editor" id="node-input-message-editor" ></div>
+    </div>
+
+     <div class="form-row">
+        <label for="node-input-voice"><i class="icon-tag"></i> Voice</label>
+        <select id="node-input-voice" >
+            <option value='0'>Salli (en-US)</option>
+            <option value='1'>Joey (en-US)</option>
+            <option value='2'>Naja (da-DK)</option>
+            <option value='3'>Mads (da-DK)</option>
+            <option value='4'>Marlene (de-DE)</option>
+            <option value='5'>Hans (de-DE)</option>
+            <option value='6'>Nicole (en-AU)</option>
+            <option value='7'>Russell (en-AU)</option>
+            <option value='8'>Amy (en-GB)</option>
+            <option value='9'>Brian (en-GB)</option>
+            <option value='10'>Emma (en-GB)</option>
+            <option value='11'>Gwyneth (en-GB-WLS)</option>
+            <option value='12'>Geraint (en-GB-WLS)</option>
+            <option value='13'>Gwyneth (cy-GB)</option>
+            <option value='14'>Geraint (cy-GB)</option>
+            <option value='15'>Raveena (en-IN)</option>
+            <option value='16'>Chipmunk (en-US)</option>
+            <option value='17'>Eric (en-US)</option>
+            <option value='18'>Ivy (en-US)</option>
+            <option value='19'>Jennifer (en-US)</option>
+            <option value='20'>Justin (en-US)</option>
+            <option value='21'>Kendra (en-US)</option>
+            <option value='22'>Kimberly (en-US)</option>
+            <option value='23'>Conchita (es-ES)</option>
+            <option value='24'>Enrique (es-ES)</option>
+            <option value='25'>Penelope (es-US)</option>
+            <option value='26'>Miguel (es-US)</option>
+            <option value='27'>Chantal (fr-CA)</option>
+            <option value='28'>Celine (fr-FR)</option>
+            <option value='29'>Mathieu (fr-FR)</option>
+            <option value='30'>Dora (is-IS)</option>
+            <option value='31'>Karl (is-IS)</option>
+            <option value='32'>Carla (it-IT)</option>
+            <option value='33'>Giorgio (it-IT)</option>
+            <option value='34'>Liv (nb-NO)</option>
+            <option value='35'>Lotte (nl-NL)</option>
+            <option value='36'>Ruben (nl-NL)</option>
+            <option value='37'>Agnieszka (pl-PL)</option>
+            <option value='38'>Jacek (pl-PL)</option>
+            <option value='39'>Ewa (pl-PL)</option>
+            <option value='40'>Jan (pl-PL)</option>
+            <option value='41'>Maja (pl-PL)</option>
+            <option value='42'>Vitoria (pt-BR)</option>
+            <option value='43'>Ricardo (pt-BR)</option>
+            <option value='44'>Cristiano (pt-PT)</option>
+            <option value='45'>Ines (pt-PT)</option>
+            <option value='46'>Carmen (ro-RO)</option>
+            <option value='47'>Maxim (ru-RU)</option>
+            <option value='48'>Tatyana (ru-RU)</option>
+            <option value='49'>Astrid (sv-SE)</option>
+            <option value='50'>Filiz (tr-TR)</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-exec"><i class="fa fa-globe"></i> Exec</label>
+        <input type="text" id="node-input-exec">
+    </div>
+    <div class="form-row">
+        <label for="node-input-dir"><i class="fa fa-globe"></i> File</label>
+        <input type="text" id="node-input-dir">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ivona-say">
+    <p><a href="http://new.boxcar.io">Ivona</a> tts api node.</p>
+    <p style="font-size: 12px; border-top: solid 1px lightgrey; text-align: right;">
+        Based on <a href="https://github.com/tmanderson/ivona-node">tmanderson/ivona-node</a>.
+    </p>
+    <p>
+        Message can be templated from the inbound <b>msg</b> using mustache syntax.
+        <pre>The payload is {{payload}}</pre>
+    </p>
+    <p>
+        <b>Exec</b> field allows to exec shell command, uses mustache syntax
+    </p>
+    <p>
+        <b>File</b> field generates file name and path to store once generated files, in order to avoid unnecessary calls to api. Uses mustache syntax.
+    </p>
+    <p>
+    It allows you to set additional parameters like volume, when there is a payload:
+<pre>
+msg.volume = "0.4"
+msg.sink = "bluez.58_51_00_00_01_BD"
+</pre>
+    You can control it with such pattern:
+    <pre>/usr/bin/someplayer --volume={{volume}} --sink={{sink}} --file={{{file}}}</pre>
+    </p>
+    <p>
+    <details style="padding: 0 1em;">
+    <summary>Accessible varialbles for <b>File</b> and <b>Exec</b> fields:</summary>
+
+        <ul style="font-size: 12px;">
+            <li><i>file</i> - (only exec) generated file path from file field</li>
+            <li><i>voice_id</i> - IVONA API voice id, for example "41"</li>
+            <li><i>voice_name</i> - IVONA API voice name, for example "Salli"</li>
+            <li><i>voice_lang</i> - IVONA API voice language, for example "pl-PL"</li>
+            <li><i>voice_gender</i> - IVONA API voice gender, for example "female"</li>
+            <li><i>msg properties</i> - you can send additional properties via msg object</li>
+        </ul>
+    </details>
+    </p>
+    <p>
+        Node output is <b>msg.payload</b> with generated pathname to file.
+        Leave exec empty to not run any command.
+    </p>
+
+
+</script>
+
+

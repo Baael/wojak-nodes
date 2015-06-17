@@ -1,0 +1,198 @@
+<!-- CREDENTIALS -->
+
+<script type="text/x-red" data-template-name="boxcar-credentials">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-api_key"><i class="fa fa-user"></i> Api key</label>
+        <input type="text" id="node-config-input-api_key">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('boxcar-credentials',{
+        category: 'config',
+        defaults: {
+            name:     { value:"" },
+            api_key:  { value:"" }
+        },
+        label: function() {
+            return this.name || "";
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('boxcar-notification',{
+        category: 'notifications',
+        color:    '#f3bfce',
+        defaults: {
+            format:  { value:"handlebars" },
+            name:    { value: "" },
+            title:   { value: "message from node-red" },
+            message: { value: "{{payload}}" },
+            sound:   { value: "bell-modern" },
+            source_name:  { value: "node-red" },
+            icon_url: { value: "" },
+            broker:  { type:"boxcar-credentials", required:true }
+        },
+        inputs:  1,
+        outputs: 0,
+        icon: "feed.png",
+        label: function() {
+            return this.name||"boxcar.io";
+        },
+        oneditprepare: function() {
+            var that = this;
+            this.editor = RED.editor.createEditor({
+                id:    'node-input-message-editor',
+                mode:  'ace/mode/html',
+                value: $("#node-input-message").val()
+            });
+            RED.library.create({
+                url:    "functions", // where to get the data from
+                type:   "function",  // the type of object the library is for
+                editor: that.editor, // the field name the main text body goes to
+                fields: ['name','outputs']
+            });
+            this.editor.focus();
+        },
+        oneditsave: function() {
+            if (this.editor) {
+                $("#node-input-message").val(this.editor.getValue())
+                delete this.editor;
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="boxcar-notification">
+    <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> Credentials</label>
+        <input type="text" id="node-input-broker">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-title"><i class="icon-tag"></i> Title</label>
+        <input type="text" id="node-input-title" placeholder="title">
+    </div>
+
+    <div class="form-row node-text-editor-row">
+        <label for="node-input-message-editor"><i class="fa fa-file-code-o"></i> Message</label>
+        <input id="node-input-message" type="hidden">
+        <div style="height: 150px;" class="node-text-editor" id="node-input-message-editor" ></div>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-source_name"><i class="icon-tag"></i> Source name</label>
+        <input type="text" id="node-input-source_name" placeholder="source" >
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-icon_url"><i class="icon-tag"></i> Icon url</label>
+        <input type="text" id="node-input-icon_url" placeholder="icon url" >
+    </div>
+
+
+
+    <div class="form-row">
+        <label for="node-input-sound"><i class="icon-tag"></i> Sound</label>
+        <select id="node-input-sound" >
+            <option value='beep-crisp'>beep-crisp</option>
+            <option value='beep-soft'>beep-soft</option>
+            <option value='bell-modern'>bell-modern</option>
+            <option value='bell-one-tone'>bell-one-tone</option>
+            <option value='bell-simple'>bell-simple</option>
+            <option value='bell-triple'>bell-triple</option>
+            <option value='bird-1'>bird-1</option>
+            <option value='bird-2'>bird-2</option>
+            <option value='boing'>boing</option>
+            <option value='cash'>cash</option>
+            <option value='clanging'>clanging</option>
+            <option value='detonator-charge'>detonator-charge</option>
+            <option value='digital-alarm'>digital-alarm</option>
+            <option value='done'>done</option>
+            <option value='echo'>echo</option>
+            <option value='flourish'>flourish</option>
+            <option value='harp'>harp</option>
+            <option value='light'>light</option>
+            <option value='magic-chime'>magic-chime</option>
+            <option value='magic-coin'>magic-coin</option>
+            <option value='notifier-1'>notifier-1</option>
+            <option value='notifier-2'>notifier-2</option>
+            <option value='notifier-3'>notifier-3</option>
+            <option value='orchestral-long'>orchestral-long</option>
+            <option value='orchestral-short'>orchestral-short</option>
+            <option value='score'>score</option>
+            <option value='success'>success</option>
+            <option value='up'>up</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="boxcar-notification">
+    <p>Push <a href="http://new.boxcar.io">Boxcar</a> notification.</p>
+    <p style="font-size: 12px; border-top: solid 1px lightgrey; text-align: right;">
+        Based on <a href="http://flows.nodered.org/flow/11fd7edfa582fb4045ca">Boxcar Push Notification to iOS</a> by mattcr.
+    </p>
+    <p>Message can be templated from the inbound<b>msg</b> using mustache syntax.
+        <pre>The payload is {{payload}}</pre>
+    </p>
+
+    <p>
+    <details style="padding: 0 1em;">
+    <summary><b>msg</b> properties:</summary>
+        <ul style="font-size: 12px;">
+          <li><i>msg.title</i> - string</li>
+          <li><i>msg.source_name</i> - string</li>
+          <li><i>msg.icon_url</i> - url to png image (best 64x64)</li>
+          <li><i>msg.sound</i> - string</li>
+        </ul>
+    </details>
+    <p>
+
+    </p>
+    <details style="padding: 0 1em;">
+    <summary>Sounds:</summary>
+        <ul style="font-size: 12px;">
+          <li>beep-crisp</li>
+          <li>beep-soft</li>
+          <li>bell-modern</li>
+          <li>bell-one-tone</li>
+          <li>bell-simple</li>
+          <li>bell-triple</li>
+          <li>bird-1</li>
+          <li>bird-2</li>
+          <li>boing</li>
+          <li>cash</li>
+          <li>clanging</li>
+          <li>detonator-charge</li>
+          <li>digital-alarm</li>
+          <li>done</li>
+          <li>echo</li>
+          <li>flourish</li>
+          <li>harp</li>
+          <li>light</li>
+          <li>magic-chime</li>
+          <li>magic-coin</li>
+          <li>notifier-1</li>
+          <li>notifier-2</li>
+          <li>notifier-3</li>
+          <li>orchestral-long</li>
+          <li>orchestral-short</li>
+          <li>score</li>
+          <li>success</li>
+          <li>up</li>
+        </ul>
+    </details>
+    </p>
+
+</script>
