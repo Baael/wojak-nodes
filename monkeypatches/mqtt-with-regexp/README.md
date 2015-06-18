@@ -10,7 +10,7 @@ mqtt with regexp
 
 ### dead simple tri state gate
 
-![example](http://screencast.com/t/mgJ5soNJRwV)
+![example](http://content.screencast.com/users/baael/folders/Jing/media/deedc963-9b5c-42de-b9e0-ef29d1be6da4/2015-06-18_2032.png)
 
 ```coffees
 
