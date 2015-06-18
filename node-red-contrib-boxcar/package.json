@@ -5,6 +5,10 @@
   "dependencies": {
     "mustache": "^2.1.2"
   },
+  "repository" : {
+        "type":"git",
+        "url":"https://github.com/Baael/wojak-nodes/tree/master/node-red-contrib-boxcar"
+  },
   "keywords": [
     "node-red", "boxcar", "boxcar.io", "notifications", "push", "iphone" ],
   ],
@@ -12,5 +16,9 @@
     "nodes": {
       "sample": "boxcar-notifications.js"
     }
+  },
+  "author": {
+    "name": "Wojciech Zielinski",
+    "email": "baaelsiljan@gmail.com"
   }
 }
