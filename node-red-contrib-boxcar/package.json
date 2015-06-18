@@ -10,11 +10,11 @@
         "url":"https://github.com/Baael/wojak-nodes/tree/master/node-red-contrib-boxcar"
   },
   "keywords": [
-    "node-red", "boxcar", "boxcar.io", "notifications", "push", "iphone" ],
+    "node-red", "boxcar", "boxcar.io", "notifications", "push", "iphone"
   ],
   "node-red": {
     "nodes": {
-      "boxcar": "boxcar-notifications.js"
+      "boxcar": "boxcar-notification.js"
     }
   },
   "author": {

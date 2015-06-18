@@ -1,0 +1,31 @@
+{
+  "name": "node-red-contrib-ivona",
+  "version": "0.0.1",
+  "description": "Ivona TTS for node-red",
+  "dependencies": {
+    "ivona-node": "^0.2.0",
+    "mustache": "^2.1.2",
+    "slug": "^0.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Baael/wojak-nodes/tree/master/node-red-contrib-ivona-tts"
+  },
+  "keywords": [
+    "node-red",
+    "ivona",
+    "tts",
+    "speech",
+    "notifications",
+    "say"
+  ],
+  "node-red": {
+    "nodes": {
+      "boxcar": "ivona.js"
+    }
+  },
+  "author": {
+    "name": "Wojciech Zielinski",
+    "email": "baaelsiljan@gmail.com"
+  }
+}
