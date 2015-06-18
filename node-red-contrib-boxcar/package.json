@@ -14,7 +14,7 @@
   ],
   "node-red": {
     "nodes": {
-      "sample": "boxcar-notifications.js"
+      "boxcar": "boxcar-notifications.js"
     }
   },
   "author": {
