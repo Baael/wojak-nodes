@@ -7,6 +7,7 @@ node-red-contrib-boxcar
 
         npm install node-red-contrib-boxcar
 
+
 ### Credentials
 
 You need to register and create your API key on [Boxcar.io](http://new.boxcar.io).
