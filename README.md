@@ -1,6 +1,8 @@
 wojak-nodes
 ===========
 
+> Collection of some handy and fancy nodes for [Node-RED](http://nodered.org/)
+
 
 ### node-red-contrib-ivona
 
