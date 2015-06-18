@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/opt/nvm/v0.10.36/bin/node',
+1 verbose cli   '/usr/local/opt/nvm/v0.10.36/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose node symlink /usr/local/opt/nvm/v0.10.36/bin/node
+5 verbose publish [ '.' ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /Users/wojak/.npm/3a52ce78-.lock
+11 verbose tar pack [ '/Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz',
+11 verbose tar pack   '.' ]
+12 verbose tarball /Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz
+13 verbose folder .
+14 info prepublish node-red-contrib-ivona@0.0.1
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. /Users/wojak/.npm/1f1177db-tar.lock
+17 silly lockFile 5463a13e--contrib-ivona-0-0-1-package-tgz tar:///Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz
+18 verbose lock tar:///Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz /Users/wojak/.npm/5463a13e--contrib-ivona-0-0-1-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile 5463a13e--contrib-ivona-0-0-1-package-tgz tar:///Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz
+22 silly lockFile 5463a13e--contrib-ivona-0-0-1-package-tgz tar:///Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package.tgz
+23 silly lockFile 9242ede9--red-contrib-ivona-0-0-1-package /Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package
+24 verbose lock /Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package /Users/wojak/.npm/9242ede9--red-contrib-ivona-0-0-1-package.lock
+25 silly lockFile 9242ede9--red-contrib-ivona-0-0-1-package /Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package
+26 silly lockFile 9242ede9--red-contrib-ivona-0-0-1-package /Users/wojak/.npm/node-red-contrib-ivona/0.0.1/package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'node-red-contrib-ivona',
+29 silly publish   version: '0.0.1',
+29 silly publish   description: 'Ivona TTS for node-red',
+29 silly publish   dependencies: { 'ivona-node': '^0.2.0', mustache: '^2.1.2', slug: '^0.9.1' },
+29 silly publish   repository:
+29 silly publish    { type: 'git',
+29 silly publish      url: 'https://github.com/Baael/wojak-nodes/tree/master/node-red-contrib-ivona-tts' },
+29 silly publish   keywords: [ 'node-red', 'ivona', 'tts', 'speech', 'notifications', 'say' ],
+29 silly publish   'node-red': { nodes: { boxcar: 'ivona.js' } },
+29 silly publish   author: { name: 'Wojciech Zielinski', email: 'baaelsiljan@gmail.com' },
+29 silly publish   readme: 'node-red-contrib-ivona\r\n======================\r\n\r\n> [Ivona](http://www.ivona.com) text-to-speech node for [Node-RED](http://nodered.org/)\r\n\r\n### Installation\r\n\r\n        npm install node-red-contrib-ivona\r\n\r\n### Credentials\r\n\r\nYou can register and create IVONA Speech Cloud API credentials here: [Ivona For Developers](http://developer.ivona.com/en/speechcloud/index.html).\r\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   _id: 'node-red-contrib-ivona@0.0.1',
+29 silly publish   scripts: {},
+29 silly publish   _shasum: '8ce07d94ce8cbf06e0289c4f86b32ed1da282cf1',
+29 silly publish   _from: '.' }
+30 verbose request where is /node-red-contrib-ivona
+31 verbose request registry https://registry.npmjs.org/
+32 verbose request id 5330159fdccdf843
+33 verbose url raw /node-red-contrib-ivona
+34 verbose url resolving [ 'https://registry.npmjs.org/', './node-red-contrib-ivona' ]
+35 verbose url resolved https://registry.npmjs.org/node-red-contrib-ivona
+36 verbose request where is https://registry.npmjs.org/node-red-contrib-ivona
+37 info trying registry request attempt 1 at 05:17:52
+38 http PUT https://registry.npmjs.org/node-red-contrib-ivona
+39 http 403 https://registry.npmjs.org/node-red-contrib-ivona
+40 verbose headers { 'content-type': 'application/json',
+40 verbose headers   'cache-control': 'max-age=60',
+40 verbose headers   'content-length': '95',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   date: 'Thu, 18 Jun 2015 03:17:53 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-fra1243-FRA',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1434597472.736335,VS0,VE742' }
+41 error publish Failed PUT 403
+42 error Error: "You cannot publish over the previously published version 0.0.1." : node-red-contrib-ivona
+42 error     at RegClient.<anonymous> (/usr/local/Cellar/nvm/0.25.0/v0.10.36/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+42 error     at Request._callback (/usr/local/Cellar/nvm/0.25.0/v0.10.36/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+42 error     at Request.self.callback (/usr/local/Cellar/nvm/0.25.0/v0.10.36/lib/node_modules/npm/node_modules/request/request.js:236:22)
+42 error     at Request.emit (events.js:98:17)
+42 error     at Request.<anonymous> (/usr/local/Cellar/nvm/0.25.0/v0.10.36/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+42 error     at Request.emit (events.js:117:20)
+42 error     at IncomingMessage.<anonymous> (/usr/local/Cellar/nvm/0.25.0/v0.10.36/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+42 error     at IncomingMessage.emit (events.js:117:20)
+42 error     at _stream_readable.js:944:16
+42 error     at process._tickCallback (node.js:442:13)
+43 error If you need help, you may report this *entire* log,
+43 error including the npm and node versions, at:
+43 error     <http://github.com/npm/npm/issues>
+44 error System Darwin 14.0.0
+45 error command "/usr/local/opt/nvm/v0.10.36/bin/node" "/usr/local/opt/nvm/v0.10.36/bin/npm" "publish"
+46 error cwd /Users/wojak/Repos/auto2/node-red/wojak-nodes/node-red-contrib-ivona-tts
+47 error node -v v0.10.36
+48 error npm -v 1.4.28
+49 verbose exit [ 1, true ]

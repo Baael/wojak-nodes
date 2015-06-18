@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-ivona",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ivona TTS for node-red",
   "dependencies": {
     "ivona-node": "^0.2.0",
