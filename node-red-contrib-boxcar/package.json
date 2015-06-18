@@ -1,0 +1,16 @@
+{
+  "name": "node-red-contrib-boxcar",
+  "version": "0.0.1",
+  "description": "Boxcar.io push notifications for node-red",
+  "dependencies": {
+    "mustache": "^2.1.2"
+  },
+  "keywords": [
+    "node-red", "boxcar", "boxcar.io", "notifications", "push", "iphone" ],
+  ],
+  "node-red": {
+    "nodes": {
+      "sample": "boxcar-notifications.js"
+    }
+  }
+}

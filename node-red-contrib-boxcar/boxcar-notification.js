@@ -53,11 +53,7 @@
           options.headers['Content-Length'] = body.length;
           req = http.request(options, function(res) {
             if (res.statusCode === 201) {
-              return node.status({
-                shape: "dot",
-                fill: "green",
-                text: "done"
-              });
+              return node.status({});
             }
           });
           req.on('error', function(e) {

@@ -35,7 +35,7 @@
 <!-- FORM -->
 
 <script type="text/javascript">
-    RED.nodes.registerType('ivona-say',{
+    RED.nodes.registerType('ivona-tts',{
         category: 'notifications',
         color:    '#f3bfce',
         defaults: {
@@ -48,7 +48,7 @@
         },
         inputs:  1,
         outputs: 1,
-        icon: "say.png",
+        icon: "ivona.png",
         label: function() {
             return this.name || "ivona";
         },
@@ -76,7 +76,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="ivona-say">
+<script type="text/x-red" data-template-name="ivona-tts">
     <div class="form-row">
         <label for="node-input-broker"><i class="fa fa-globe"></i> Credentials</label>
         <input type="text" id="node-input-broker">
@@ -154,7 +154,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="ivona-say">
+<script type="text/x-red" data-help-name="ivona-tts">
     <p><a href="http://new.boxcar.io">Ivona</a> tts api node.</p>
     <p style="font-size: 12px; border-top: solid 1px lightgrey; text-align: right;">
         Based on <a href="https://github.com/tmanderson/ivona-node">tmanderson/ivona-node</a>.

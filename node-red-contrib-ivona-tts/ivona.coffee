@@ -70,7 +70,7 @@ module.exports = (RED)->
 
 
 
-  IvonaSayNode = (config)->
+  IvonaTTSNode = (config)->
     RED.nodes.createNode this, config
 
     node = this
@@ -147,4 +147,4 @@ module.exports = (RED)->
 
   RED.nodes.registerType "ivona-credentials", IvonaCredentialsNode
 
-  RED.nodes.registerType "ivona-say", IvonaSayNode
+  RED.nodes.registerType "ivona-tts", IvonaTTSNode
