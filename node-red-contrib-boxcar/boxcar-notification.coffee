@@ -40,6 +40,7 @@ module.exports = (RED)->
         sound:        msg.sound || node.sound
         source_name:  msg.source_name || node.source_name
         icon_url:     node.icon_url
+	open_url:     msg.open_url || node.open_url
         long_message: mustache.render node.message, msg
 
       body = "user_credentials=#{node.api_key}"
