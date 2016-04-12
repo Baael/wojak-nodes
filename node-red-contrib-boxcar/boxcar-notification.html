@@ -37,6 +37,7 @@
             sound:   { value: "bell-modern" },
             source_name:  { value: "node-red" },
             icon_url: { value: "" },
+	    open_url: { value: "" },
             broker:  { type:"boxcar-credentials", required:true }
         },
         inputs:  1,
@@ -101,6 +102,11 @@
         <input type="text" id="node-input-icon_url" placeholder="icon url" >
     </div>
 
+    <div class="form-row">
+        <label for="node-input-open_url"><i class="icon-tag"></i> Open url</label>
+        <input type="text" id="node-input-open_url" placeholder="open url" >
+    </div>
+
 
 
     <div class="form-row">
@@ -155,6 +161,7 @@
           <li><i>msg.source_name</i> - string</li>
           <li><i>msg.icon_url</i> - url to png image (best 64x64)</li>
           <li><i>msg.sound</i> - string</li>
+	  <li><i>msg.open_url</i> - If defined, Boxcar will redirect you to this url when you open the notification from the Notification Center</li>
         </ul>
     </details>
     <p>
